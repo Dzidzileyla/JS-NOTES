@@ -1,9 +1,12 @@
-"use strict";
-
-function foo(a) {
-    b = a;
-	console.log( a + b ); // 4
-}
-
-foo( 2 );
-console.log(b); // zmienna b w global scope???????
+function foo() {
+    function bar(a) {
+      i = 3; // changing the `i` in the enclosing scope's for-loop
+      console.log(a + i);
+    }
+  
+    for (var i = 0; i < 10; i++) {
+      bar(i * 2); // oops, infinite loop ahead!
+    }
+  }
+  
+  foo();
